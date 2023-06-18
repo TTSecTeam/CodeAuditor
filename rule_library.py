@@ -24,3 +24,11 @@ class FunctionDefRule(Rule):
             if len(node.body) == 0:
                 return "函数定义不能为空"
         return None
+
+class DangerousFunctionRule(Rule):
+    def check(self, node):
+        if isinstance(node, ast.Call):
+            if isinstance(node.func, ast.Name):
+                if node.func.id in ['eval', 'exec']:
+                    return "请避免使用 'eval' 或 'exec' 函数"
+        return None
