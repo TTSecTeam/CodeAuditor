@@ -1,6 +1,27 @@
 # CodeAuditor
 python代码审计工具
 
+# PyCodeAuditor
+
+CodeAuditor 是一个 Python 代码审计工具，能够遍历指定目录中的所有 Python 文件，并根据预设的规则库进行代码审计，最后生成审计报告。
+
+## 安装
+
+本工具目前未提供安装包，你可以直接克隆代码库到本地使用。同时，你需要安装 `tqdm` 进度条库。
+
+```bash
+# 克隆代码库
+git clone https://github.com/TTSecTeam/CodeAuditor.git
+
+# 进入代码库目录
+cd CodeAuditor
+
+# 安装 tqdm
+pip install tqdm
+
+```
+
+
 ```angular2html
 
 +------+     +----------------+     +------------------+     +----------------+     +-----+
