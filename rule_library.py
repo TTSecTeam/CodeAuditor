@@ -92,3 +92,14 @@ class InsecureFunctionRule:
         if isinstance(node, ast.Call) and isinstance(node.func, ast.Name) and node.func.id in self.insecure_functions:
             return f"检测到使用了不安全的函数：{node.func.id}"
         return None
+
+
+class UnsecureDeserializationRule(Rule):
+    insecure_functions = ['pickle.loads', 'pickle.load']
+
+    def check(self, node):
+        if isinstance(node, ast.Call) and isinstance(node.func, ast.Attribute):
+            function_name = node.func.value.id + "." + node.func.attr
+            if function_name in self.insecure_functions:
+                return f"检测到可能存在反序列化漏洞的函数：{function_name}"
+        return None

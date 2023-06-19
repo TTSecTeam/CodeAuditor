@@ -5,15 +5,18 @@
 @Author:尘心||rocky
 '''
 
-import sys
-import os
 import logging
+import sys
+
+from colorama import Fore
 from tqdm import tqdm
-from colorama import Fore, Back, Style
+
 from code_parser import CodeParser
-from rule_engine import RuleEngine
 from report_generator import ReportGenerator
-from rule_library import ImportRule, FunctionDefRule, DangerousFunctionRule, EvalUsageRule, UnusedVariableRule, TypeErrorRule, ExceptionNotHandledRule, InsecureFunctionRule
+from rule_engine import RuleEngine
+from rule_library import ImportRule, FunctionDefRule, DangerousFunctionRule, EvalUsageRule, UnusedVariableRule, \
+    TypeErrorRule, ExceptionNotHandledRule, InsecureFunctionRule, UnsecureDeserializationRule
+
 
 def main():
     logging.basicConfig(level=logging.INFO)
@@ -25,7 +28,7 @@ def main():
     # 创建规则库并添加规则
     logging.info("创建规则库...")
     rules = [ImportRule(), FunctionDefRule(), DangerousFunctionRule(), EvalUsageRule(), UnusedVariableRule(),
-             TypeErrorRule(), ExceptionNotHandledRule(), InsecureFunctionRule()]
+             TypeErrorRule(), ExceptionNotHandledRule(), InsecureFunctionRule(), UnsecureDeserializationRule()]
     # 创建规则执行引擎并加载规则库
     logging.info("创建规则执行引擎...")
     engine = RuleEngine(rules)
@@ -49,6 +52,7 @@ def main():
     report_generator.generate(engine.errors)
 
     logging.info("完成代码审计。")
+
 
 if __name__ == '__main__':
     main()
