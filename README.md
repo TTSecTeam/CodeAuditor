@@ -1,7 +1,7 @@
 # CodeAuditor
 python代码审计工具
 
-# PyCodeAuditor
+# CodeAuditor
 
 CodeAuditor 是一个 Python 代码审计工具，能够遍历指定目录中的所有 Python 文件，并根据预设的规则库进行代码审计，最后生成审计报告。
 
