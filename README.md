@@ -21,6 +21,9 @@ pip install tqdm
 
 ```
 
+# 使用方法
+![img.png](img.png)
+
 
 ```angular2html
 
